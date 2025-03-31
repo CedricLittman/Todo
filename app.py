@@ -4,20 +4,7 @@ from flask import Flask, render_template, request, redirect, url_for
 app = Flask(__name__)
 
 todos = []
-"""
-todos = [
-    {
-        'id': 1,
-        'name': 'Write SQL',
-        'checked': False
-    },
-    {
-        'id': 2,
-        'name': 'Write Python',
-        'checked': True
-    }
-]
-"""
+
 @app.route("/", methods=["GET", "POST"])
 @app.route("/home", methods=["GET", "POST"])
 def home():
@@ -49,7 +36,6 @@ def delete_todo(todo_id):
         if todo['id'] == todo_id:
             todos.remove(todo)
     return redirect(url_for("home"))
-
 
 if __name__ == "__main__":
     app.run(debug=True)
