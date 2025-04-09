@@ -22,10 +22,13 @@
       <button id="add-todo">+</button>
     </form>
     <h2>To Do's</h2>
+    <p>Total Tasks: {{items|length}}</p>
+    <p>Remaining Tasks: 
+      {{items|selectattr('checked', 'false' )|list|length}}</p>
     <div class="todo-container">
       {% for item in items %}
       <div class="todo">
-        <p>{{ item.name }}</p>
+        <p>{{   item.name }}</p>
         <div class="actions">
           <form
             action="{{ url_for('checked_todo', todo_id=item.id) }}"
